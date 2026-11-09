@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">rdr</string>
+    <string name="title_activity_main">rdr</string>
+    <string name="package_name">app.rdr</string>
+    <string name="custom_url_scheme">app.rdr</string>
+</resources>

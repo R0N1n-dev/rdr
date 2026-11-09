@@ -1,0 +1,50 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+android/app/build/
+android/build/
+android/.gradle/
+android/capacitor-cordova-android-plugins/build/
+
+# local environment
+.freebuff/
+.DS_Store
+*.log
+android/local.properties
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+
+# signing material
+*.jks
+*.keystore
+keystore.properties
+google-services.json
+
+# Android artifacts that can land outside android/
+*.apk
+*.aab
+*.aar
+*.ap_
+local.properties
+.cxx/
+.externalNativeBuild/
+captures/
+*.hprof
+
+# IDE / editor stray files
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+Thumbs.db
+
+# env files and test/build caches
+.env
+.env.*
+!.env.example
+coverage/
+*.tsbuildinfo
