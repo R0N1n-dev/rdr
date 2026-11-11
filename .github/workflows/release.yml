@@ -98,8 +98,16 @@ jobs:
           KEY_ALIAS: ${{ secrets.RDR_KEY_ALIAS }}
         run: |
           test -s android/app/my-release-key.jks
-          keytool -list -keystore android/app/my-release-key.jks -storepass "$STORE_PASSWORD" > /tmp/ks.txt
-          grep -q "$KEY_ALIAS" /tmp/ks.txt
+          if ! keytool -list -keystore android/app/my-release-key.jks -storepass "$STORE_PASSWORD" > /tmp/ks.txt 2>/tmp/ks.err; then
+            echo "::error::keytool could not open the keystore (wrong RDR_KEYSTORE_PASSWORD?)"
+            cat /tmp/ks.err >&2
+            exit 1
+          fi
+          if ! grep -F -q "$KEY_ALIAS" /tmp/ks.txt; then
+            echo "::error::Key alias not found in keystore. Entries in keystore:"
+            cat /tmp/ks.txt
+            exit 1
+          fi
 
       - name: Write signing config
         env:
